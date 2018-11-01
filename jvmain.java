@@ -21,6 +21,7 @@ public class jvmain {
 		datapack pack = new datapack();
 		datebuffer datebuffer =new datebuffer();
 		buble buble =new buble();
+		mt mt = new mt();
 		/*
 		 * ~ANOTHER WAY IS OK! * REF to <use []> (SEE ReadInput.java) ReadInput input =
 		 * new ReadInput(); String[] getInputStr = input.Getinput(0);
@@ -54,14 +55,16 @@ public class jvmain {
 					date = Integer.valueOf(addin.substring(addin.indexOf("/") + 1, addin.indexOf("/") + 3));
 
 				} else {
-					System.out.println("日期之月、日需要用/隔開!日期輸入錯誤!");break;
+					System.out.println("指令錯誤，請輸入合法日期(其中日期之月、日需要用/隔開)!");break;
 				}
-				if ((date<1)||(date>31)) {System.out.println("日期錯誤!");break;}
-				dayc.dayc(date);
+				if ((date<1)||(date>31)) {System.out.println("日期錯誤!(不存在的日期)");break;}
 				datebuffer.datebuffer(date);
+				dayc.dayc(date);
+				
 				break;
 			case 1:
 				System.out.println("系統得到指令:exit；正在執行...");
+				counii=-1;
 				break;
 			case 2:
 				int wrong = 0;
@@ -189,8 +192,8 @@ public class jvmain {
 								//System.out.println("OK3");
 								//System.out.println(((pack.num(i)) / 10000) + "_" + ((t * 100) + m) + "_"
 									//	+ ((pack.num(i)) % 10000) + "_" + ((t * 100) + m));
-								if (((pack.num(i)) / 10000) == ((t * 100) + m)
-										|| ((pack.num(i)) % 10000) == ((t * 100) + m)) {
+								if ((((pack.num(i)) / 10000) == ((t * 100) + m)
+										|| ((pack.num(i)) % 10000) == ((t * 100) + m))&& (pack.id(i)/1000==datebuffer.GDB())) {
 									System.out.println("錯誤!時間重複!");
 									timere=1;
 									break;
@@ -211,8 +214,8 @@ for (int i = 0; i < pack.numL(); i++) {
 			//System.out.println("OK3");
 			//System.out.println((adT / 10000) + "_" + ((t * 100) + m) + "_"
 					//+ (adT % 10000) + "_" + ((t * 100) + m));
-			if ((adT / 10000) == ((t * 100) + m)
-					|| (adT % 10000) == ((t * 100) + m)) {
+			if (((adT / 10000) == ((t * 100) + m)
+					|| (adT % 10000) == ((t * 100) + m))&& (pack.id(i)/1000==datebuffer.GDB())){
 				System.out.println("錯誤!時間重複!");
 				timere2=1;
 				break;
@@ -225,9 +228,11 @@ if (timere2==1) {break;}
 					pack.save(adT, addin2.substring(recind2 + 1, addin2.length()));
 					System.out.print("已添加時間" +(adT / 1000000)+":" +((adT % 1000000) / 10000)+"~"+((adT % 10000 / 100))+":"+(adT % 100)+"，其活動為:");
 					System.out.println(addin2.substring(recind2 + 1, addin2.length()));
-					pack.addID(date*1000);
-					///System.out.println("date*1000"+(date*1000));
+					pack.addID(datebuffer.GDB()*1000);
+					//System.out.println("date*1000"+(date*1000));
 					buble.buble();
+					dayc.dayc(datebuffer.GDB());
+
 
 				} catch (java.lang.NumberFormatException ex) {
 					System.out.println(
@@ -238,13 +243,57 @@ if (timere2==1) {break;}
 				break;
 			case 3:
 				System.out.println("系統得到指令:month；正在執行...");
+				mt.mt();
+				System.out.print("\n");
 				datebuffer.datebuffer(-1);
 				break;
 			case 4:
 				System.out.println("系統得到指令:del；正在執行...");
+				String in4 = input.Inbuffer();
+				char[] cin4 = in4.toCharArray();
+				int sla = (int)'-';
+				int cini = -1;
+				int two = -1;
+				int delnum = 0;
+				int dak=datebuffer.GDB();
+				for (int i=0;i<in4.length();i++) {
+					if (cin4[i]==sla) {
+						cini=i;
+						two=two+1;
+					}
+				
+				}
+				switch (two) {
+				case 0:
+				for (int kz=1;kz<((in4.length())-cini);kz++) {
+					delnum=delnum+((Integer.valueOf(in4.substring(cini+kz, cini+kz+1)))*((int)Math.pow(10, kz-1)));
+				}
+				for (int ik=0;ik<pack.idL();ik++) {
+					if (((pack.id(ik)/1000)==dak)&&((pack.id(ik)%1000)==(delnum-1))) {
+						pack.listset(ik,(pack.id(ik)%1000));
+					}
+				}
+				dayc.dayc(dak);
+				break;
+				case 1:
+					//for (int kz=1;kz<((in4.length-cini));kz++) {
+					//	delnum=delnum+((Integer.valueOf(in4.substring(cini+kz, cini+kz+2)))*((int)Math.pow(10, kz-1)))
+					//}
+					System.out.println("刪除"+dak+"全部活動");
+					for (int ik=0;ik<pack.idL();ik++) {
+						if ((pack.id(ik)/1000)==dak) {
+							pack.listset(ik,(pack.id(ik)%1000));
+						}
+					}
+					dayc.dayc(dak);
+					break;
+					
+				}
+
 				break;
 			case 5:
 				System.out.println("系統得到指令:edit；正在執行...");
+				
 				break;
 			}
 		}
@@ -316,8 +365,11 @@ class buble{
 				//System.out.println("bubBF"+bubBF);
 				int set0 =-1;
 				set0=DPB.id(i)/1000;
+				//System.out.println("DPB.id(i)"+DPB.id(i));
 				set0=set0*1000;
+				//System.out.println("set0=set0*1000"+set0);
 				DPB.listset(i,set0);
+				//System.out.println("DPB.listset(i,set0);"+set0);
 				int ifno=0;
 				for (int iP=0;iP<DPB.idL();iP++) {
 					//System.out.println("for (int iP=0;iP<DPB.idL();iP++) {");
@@ -327,7 +379,7 @@ class buble{
 
 						//if (iP!=i) {
 							//System.out.println("if (iP!=i) {");
-							if (DPB.num(i)/10000 < DPB.num(iP)/10000) {
+							if (DPB.num(i)/10000 > DPB.num(iP)/10000) {
 								ifno--;
 								//System.out.println("if (DPB.num(i)/10000 < DPB.num(iP)/10000) {");
 								int dbiidbuf = -1 ;
@@ -335,6 +387,7 @@ class buble{
 								dbiidbuf=dbiidbuf+1;
 								//System.out.println(dbiidbuf);
 								DPB.listset(i,dbiidbuf);
+								//System.out.println(DPB.num(i)+"_"+dbiidbuf);
 							}
 						//}/*else {
 							/*int dbiidbuf = -1 ;
@@ -369,6 +422,73 @@ class datebuffer{
 		
 	}
 }
+
+
+class mt {
+	public static void mt() {
+		datapack MTD =new datapack();
+		// into basic
+		String[] dayarrayR = new String[32]; /// <!--have 32 day here changable
+		int day_filter = 31; // <--!changeable
+		int printdayfilter = -1; // <!--counter
+		final int week = 7;
+		System.out.println("        2018年10月");
+		int CD = 1 ;
+		for (int day = 0; day <= day_filter; day++) {
+			printdayfilter++;
+			dayarrayR[day] = Integer.toString(day);
+			if (day == 0) {
+				System.out.print("     ");
+				continue;
+			} else {
+				;
+			}
+			if (printdayfilter < week) {
+				// String[] dayarrayR = new String[day+10];
+				// System.arraycopy(dayarrayR, 0, dayarrayR, 0, dayarrayR.length);
+				System.out.print(dayarrayR[day]);
+				CD = 1 ;
+				for (int i = 0 ; i < MTD.idL();i++) {
+					if ((MTD.id(i)/1000)==day){
+						CD=CD*0;
+					}
+				}
+				if (CD==1) {
+					System.out.print(" ");
+				}else {
+					System.out.print("*");
+				}
+				System.out.print("  ");
+				
+			} else {
+				System.out.print("\n");
+				System.out.print(dayarrayR[day]);
+				CD = 1 ;
+				for (int i = 0 ; i < MTD.idL();i++) {
+					if ((MTD.id(i)/1000)==day){
+						CD=CD*0;
+					}
+				}
+				if (CD==1) {
+					System.out.print(" ");
+				}else {
+					System.out.print("*");
+				}
+				printdayfilter = 0;
+				System.out.print("  ");
+			}
+			
+			if (day < 10) {
+				System.out.print(" ");
+			} else {
+				;
+			}
+		} // {for.print day}
+			// end of basic
+		
+	}// {setup-fn}
+}// {setup-class}
+
 
 class setup {
 	public static String[] setup() {
@@ -430,18 +550,19 @@ class dayc {
 		} else {
 			bufc = -1;
 			ook = 0;
-			coubfu = 0;
+			coubfu = -1;
 			//for (int i = 0; i < daycPack.idL(); i++) {
 				//if (((daycPack.id(i) / 1000) == daycIn) && (bufc < (daycPack.id(i) % 1000))) {
 					//bufc = (daycPack.id(i) % 1000);
 				//}
 			//}
 			if (daycPack.idL() == -1) {
-				System.out.println("本日無任何活動!");
+				System.out.println("錯誤!(錯誤代碼:IDL，N/A)，非預期錯誤，請通知系統開發人員");
 				return;
 			}
 			//while (ook == 0) {
-			System.out.println("OK");
+			//System.out.println("OK");
+			int allnoDP=-1;
 				for (int i = 0; i < daycPack.idL(); i++) {
 					//System.out.println("for (int i = 0; i < daycPack.idL(); i++)");
 					//System.out.println(coubfu);
@@ -452,17 +573,27 @@ class dayc {
 					if (((daycPack.id(i) / 1000) == daycIn) && ((daycPack.id(i) % 1000) > coubfu)) {
 						//System.out.println(coubfu);
 						coubfu = (daycPack.id(i) % 1000);
+						allnoDP=0;
 						//System.out.println((daycPack.id(i) % 1000) + ". "/* 1_ */ + daycPack.num(i) + " "/* 1_ */
 								//+ daycPack.txt(i));
 					}
 				}
-				for (int ib = 0; ib < (coubfu+1); ib++) {
+				if (allnoDP==-1) {System.out.println("今日無任何活動請添加");
+				return;}
+				int nowid=-1;
+				for (int ib = 0; nowid< (coubfu); ib++) {
+					//System.out.println("for (int ib = 0; ib < (coubfu+1); ib++) {");
 				for (int i = 0; i < daycPack.idL(); i++) {
 					if (((daycPack.id(i) / 1000) == daycIn) && ((daycPack.id(i) % 1000) == ib)) {
+						nowid=(daycPack.id(i) % 1000);
 						//coubfu = (daycPack.id(i) % 1000);
-						int adTC = daycPack.num(ib);
-						System.out.println(((daycPack.id(ib) % 1000)+1) + ". "/* 1_ */ + +(adTC / 1000000)+":" +((adTC % 1000000) / 10000)+"~"+((adTC % 10000 / 100))+":"+(adTC % 100)+ " "/* 1_ */
-								+ daycPack.txt(ib));
+						//System.out.println("(daycPack.id(ib) / 1000)"+(daycPack.id(ib) / 1000));
+						//System.out.println("((daycPack.id(i) / 1000) == daycIn)"+((daycPack.id(i) / 1000) == daycIn));
+						//System.out.println(" daycIn"+ daycIn);
+						//System.out.println("(daycPack.id(ib) % 1000)"+(daycPack.id(ib) % 1000));
+						int adTC = daycPack.num(i);
+						System.out.println(((daycPack.id(i) % 1000)+1) + ". "/* 1_ */ + +(adTC / 1000000)+":" +((adTC % 1000000) / 10000)+"~"+((adTC % 10000 / 100))+":"+(adTC % 100)+ " "/* 1_ */
+								+ daycPack.txt(i));
 					}
 				}
 				}
