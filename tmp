@@ -1,0 +1,133 @@
+<section class="py-12 bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+
+            <!-- Heading -->
+            <h2 class="mb-10 text-white">Shop &amp; Account Pages</h2>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+
+            <!-- Slider -->
+            <div data-flickity="{&quot;pageDots&quot;: true}" class="flickity-enabled is-draggable" tabindex="0">
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+            <div class="flickity-viewport" style="height: 315.984px; touch-action: pan-y;"><div class="flickity-slider" style="left: 0px; transform: translateX(-466.66%);"><div class="col-12 col-md-4 pt-1 is-selected" style="position: absolute; left: 466.66%;">
+
+                <!-- Item -->
+                <a class="d-block lift" href="shop.html">
+                  <img class="img-fluid" src="assets/img/screenshots/shop/shop.png" alt="...">
+                </a>
+
+              </div><div class="col-12 col-md-4 pt-1" aria-hidden="true" style="position: absolute; left: 499.99%;">
+
+                <!-- Item -->
+                <a class="d-block lift" href="shop-topbar.html">
+                  <img class="img-fluid" src="assets/img/screenshots/shop/shop-topbar.png" alt="...">
+                </a>
+
+              </div><div class="col-12 col-md-4 pt-1" aria-hidden="true" style="position: absolute; left: 533.32%;">
+
+                <!-- Item -->
+                <a class="d-block lift" href="shop-collapse.html">
+                  <img class="img-fluid" src="assets/img/screenshots/shop/shop-collapse.png" alt="...">
+                </a>
+
+              </div><div class="col-12 col-md-4 pt-1" aria-hidden="true" style="position: absolute; left: 566.66%;">
+
+                <!-- Item -->
+                <a class="d-block lift" href="shop-simple.html">
+                  <img class="img-fluid" src="assets/img/screenshots/shop/shop-simple.png" alt="...">
+                </a>
+
+              </div><div class="col-12 col-md-4 pt-1" aria-hidden="true" style="position: absolute; left: 133.33%;">
+
+                <!-- Item -->
+                <a class="d-block lift" href="shop-masonry.html">
+                  <img class="img-fluid" src="assets/img/screenshots/shop/shop-masonry.png" alt="...">
+                </a>
+
+              </div><div class="col-12 col-md-4 pt-1" aria-hidden="true" style="position: absolute; left: 166.66%;">
+
+                <!-- Item -->
+                <a class="d-block lift" href="product.html">
+                  <img class="img-fluid" src="assets/img/screenshots/shop/product.png" alt="...">
+                </a>
+
+              </div><div class="col-12 col-md-4 pt-1" aria-hidden="true" style="position: absolute; left: 200%;">
+
+                <!-- Item -->
+                <a class="d-block lift" href="product-images-left.html">
+                  <img class="img-fluid" src="assets/img/screenshots/shop/product-images-left.png" alt="...">
+                </a>
+
+              </div><div class="col-12 col-md-4 pt-1" aria-hidden="true" style="position: absolute; left: 233.33%;">
+
+                <!-- Item -->
+                <a class="d-block lift" href="product-image-grid.html">
+                  <img class="img-fluid" src="assets/img/screenshots/shop/product-image-grid.png" alt="...">
+                </a>
+
+              </div><div class="col-12 col-md-4 pt-1" aria-hidden="true" style="position: absolute; left: 266.66%;">
+
+                <!-- Item -->
+                <a class="d-block lift" href="product-image-slider.html">
+                  <img class="img-fluid" src="assets/img/screenshots/shop/product-image-slider.png" alt="...">
+                </a>
+
+              </div><div class="col-12 col-md-4 pt-1" aria-hidden="true" style="position: absolute; left: 299.99%;">
+
+                <!-- Item -->
+                <a class="d-block lift" href="product-images-stacked.html">
+                  <img class="img-fluid" src="assets/img/screenshots/shop/product-images-stacked.png" alt="...">
+                </a>
+
+              </div><div class="col-12 col-md-4 pt-1" aria-hidden="true" style="position: absolute; left: 333.33%;">
+
+                <!-- Item -->
+                <a class="d-block lift" href="shopping-cart.html">
+                  <img class="img-fluid" src="assets/img/screenshots/shop/shopping-cart.png" alt="...">
+                </a>
+
+              </div><div class="col-12 col-md-4 pt-1" aria-hidden="true" style="position: absolute; left: 366.66%;">
+
+                <!-- Item -->
+                <a class="d-block lift" href="checkout.html">
+                  <img class="img-fluid" src="assets/img/screenshots/shop/checkout.png" alt="...">
+                </a>
+
+              </div><div class="col-12 col-md-4 pt-1" aria-hidden="true" style="position: absolute; left: 399.99%;">
+
+                <!-- Item -->
+                <a class="d-block lift" href="order-completed.html">
+                  <img class="img-fluid" src="assets/img/screenshots/shop/order-completed.png" alt="...">
+                </a>
+
+              </div><div class="col-12 col-md-4 pt-1" aria-hidden="true" style="position: absolute; left: 433.33%;">
+
+                <!-- Item -->
+                <a class="d-block lift" href="shipping-and-returns.html">
+                  <img class="img-fluid" src="assets/img/screenshots/shop/shipping-and-returns.png" alt="...">
+                </a>
+
+              </div></div></div><ol class="flickity-page-dots"><li class="dot is-selected" aria-label="Page dot 1" aria-current="step"></li><li class="dot" aria-label="Page dot 2"></li><li class="dot" aria-label="Page dot 3"></li><li class="dot" aria-label="Page dot 4"></li><li class="dot" aria-label="Page dot 5"></li><li class="dot" aria-label="Page dot 6"></li><li class="dot" aria-label="Page dot 7"></li><li class="dot" aria-label="Page dot 8"></li><li class="dot" aria-label="Page dot 9"></li><li class="dot" aria-label="Page dot 10"></li><li class="dot" aria-label="Page dot 11"></li><li class="dot" aria-label="Page dot 12"></li><li class="dot" aria-label="Page dot 13"></li><li class="dot" aria-label="Page dot 14"></li></ol></div>
+
+          </div>
+        </div>
+      </div>
+    </section>
