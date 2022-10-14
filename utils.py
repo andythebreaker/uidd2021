@@ -49,8 +49,8 @@ class ImageLaTeXDataset(Dataset):
 
     def __getitem__(self, i):
         image_file = os.path.join(self.image_dir, str(i) + '.jpg')
-        image = np.array(Image.open(image_file))
-        image=self.padding(image,2000,2000)
+        image = np.array(resize_with_padding(Image.open(image_file), (2000, 2000)))
+        #image=self.padding(image,2000,2000)
         if self.formulas:
             data = [image, self.formulas[i]]
         else:
@@ -59,6 +59,26 @@ class ImageLaTeXDataset(Dataset):
         if self.transform:
             data = self.transform(data)
         return data
+    
+    def padding(img, expected_size):
+        desired_size = expected_size
+        delta_width = desired_size - img.size[0]
+        delta_height = desired_size - img.size[1]
+        pad_width = delta_width // 2
+        pad_height = delta_height // 2
+        padding = (pad_width, pad_height, delta_width - pad_width, delta_height - pad_height)
+        return ImageOps.expand(img, padding)
+
+
+    def resize_with_padding(img, expected_size):
+        img.thumbnail((expected_size[0], expected_size[1]))
+        # print(img.size)
+        delta_width = expected_size[0] - img.size[0]
+        delta_height = expected_size[1] - img.size[1]
+        pad_width = delta_width // 2
+        pad_height = delta_height // 2
+        padding = (pad_width, pad_height, delta_width - pad_width, delta_height - pad_height)
+        return ImageOps.expand(img, padding)
     
     def padding(array, xx, yy):
         h = array.shape[0]
