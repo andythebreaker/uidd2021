@@ -49,7 +49,7 @@ class ImageLaTeXDataset(Dataset):
 
     def __getitem__(self, i):
         image_file = os.path.join(self.image_dir, str(i) + '.jpg')
-        image = np.array(resize_with_padding(Image.open(image_file), (2000, 2000)))
+        image = np.array(self.resize_with_padding(Image.open(image_file), (2000, 2000)))
         #image=self.padding(image,2000,2000)
         if self.formulas:
             data = [image, self.formulas[i]]
