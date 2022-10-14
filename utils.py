@@ -50,6 +50,7 @@ class ImageLaTeXDataset(Dataset):
     def __getitem__(self, i):
         image_file = os.path.join(self.image_dir, str(i) + '.jpg')
         image = np.array(Image.open(image_file))
+        image=self.padding(image,2000,2000)
         if self.formulas:
             data = [image, self.formulas[i]]
         else:
@@ -58,6 +59,18 @@ class ImageLaTeXDataset(Dataset):
         if self.transform:
             data = self.transform(data)
         return data
+    
+    def padding(array, xx, yy):
+        h = array.shape[0]
+        w = array.shape[1]
+
+        a = (xx - h) // 2
+        aa = xx - a - h
+
+        b = (yy - w) // 2
+        bb = yy - b - w
+
+        return np.pad(array, pad_width=((a, aa), (b, bb)), mode='constant')
 
 
 class Tokenize:
