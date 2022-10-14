@@ -1,5 +1,5 @@
 import os
-from PIL import Image
+from PIL import Image, ImageOps
 import numpy as np
 import torch
 from torch.utils.data import Dataset
